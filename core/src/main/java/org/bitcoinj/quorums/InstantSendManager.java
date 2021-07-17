@@ -555,7 +555,7 @@ public class InstantSendManager implements RecoveredSignatureListener {
             for (TransactionOutPoint in : islock.inputs) {
                 otherIsLock = db.getInstantSendLockByInput(in);
                 if (otherIsLock != null) {
-                    log.info("CInstantSendManager::{} -- txid={}, islock={}: conflicting input in islock. input={}, other islock={}, peer={}",
+                    log.info("txid={}, islock={}: conflicting input in islock. input={}, other islock={}, peer={}",
                             islock.txid.toString(), hash.toString(), in.toStringShort(), otherIsLock.getHash().toString(), from);
                 }
             }

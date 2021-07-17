@@ -201,7 +201,7 @@ public class ChainLocksHandler extends AbstractManager implements RecoveredSigna
             if (internalHasConflictingChainLock(clsig.height, clsig.blockHash)) {
                 // This should not happen. If it happens, it means that a malicious entity controls a large part of the MN
                 // network. In this case, we don't allow him to reorg older chainlocks.
-                log.info("{} -- new CLSIG ({}) tries to reorg previous CLSIG ({}), peer={}",
+                log.info("new CLSIG ({}) tries to reorg previous CLSIG ({}), peer={}",
                         clsig.toString(), bestChainLock.toString(), from);
                 return;
             }
@@ -244,7 +244,7 @@ public class ChainLocksHandler extends AbstractManager implements RecoveredSigna
         try {
 
             if (newBlock.getHeader().getHash().equals(bestChainLock.blockHash)) {
-                log.info("{} -- block header {} came in late, updating and enforcing\n", newBlock.getHeader().getHash().toString());
+                log.info("block header {} came in late, updating and enforcing", newBlock.getHeader().getHash().toString());
 
                 if (bestChainLock.height != newBlock.getHeight()) {
                     // Should not happen, same as the conflict check from ProcessNewChainLock.
